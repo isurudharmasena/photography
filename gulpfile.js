@@ -8,19 +8,19 @@ var rename = require('gulp-rename');
 var del = require('del');
 
 gulp.task('delete', function () {
-    return del(['images/*.*']);
+    return del(['images/thumbs/*.*']);
 });
 
 gulp.task('resize-images', function () {
-    return gulp.src('images/*.*')
+    return gulp.src('images/fulls/*.*')
         .pipe(imageResize({
             width: 1024,
-            imageMagick: true
+            imageMagick: false
         }))
         .pipe(gulp.dest('images/fulls'))
         .pipe(imageResize({
             width: 512,
-            imageMagick: true
+            imageMagick: false
         }))
         .pipe(gulp.dest('images/thumbs'));
 });
